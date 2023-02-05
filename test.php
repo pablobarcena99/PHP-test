@@ -1,5 +1,4 @@
 <?php
-// Enter your code here, enjoy!
 $cities = ['Logroño', 'Zaragoza', 'Teruel', 'Madrid', 'Lleida', 'Alicante', 'Castellón', 'Segovia', 'Ciudad Real'];
 $connections = [
   [0, 4, 6, 8, 0, 0, 0, 0, 0],
@@ -84,14 +83,12 @@ function getCheapestRouteToDestination($possibleRoutes, $cities, $departure, $de
   $routesToDestination = array_filter($possibleRoutes, function ($value) use ($destination) {
     return (end($value["route"]) == $destination);
   });
-
   $sortedRoutes = sortRoutesByPrice($routesToDestination);
   $citiesOfRoute = [];
 
   foreach ($sortedRoutes[0]["route"] as $city) {
     array_push($citiesOfRoute, $cities[$city]);
   }
-
   $citiesOfRoute = implode(', ', $citiesOfRoute);
   $routePrice = $sortedRoutes[0]["price"];
 
